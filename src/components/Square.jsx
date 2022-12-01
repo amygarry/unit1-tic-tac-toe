@@ -1,10 +1,26 @@
 import React from "react"
 
 
+
 function Square (props){
-    console.log(props.squares, props.player)
+   
+    function handleClick (){ 
+        if (!props.squareValue) {
+            if (props.player) {
+                props.squares.splice(props.index, 1, "X");
+                props.setSquares(props.squares);
+                props.setPlayer(!props.player);
+            } else {
+                props.squares.splice(props.index, 1, "O");
+                props.setSquares(props.squares);
+                props.setPlayer(!props.player);
+            }
+        }
+    }
     return (
-        <div className="square"></div>
+        <div className="square" onClick={handleClick}>
+            {props.squareValue}
+        </div>
     )
 }
 
